@@ -16,31 +16,35 @@ exports.handler = function(event, context, callback) {
 };
 
 var handlers = {
-    'LaunchRequest': function () {
-        this.emit('GetFact');
+    'LaunchRequest': function() {
+        this.emit('LaunchQuoteApp');
     },
-    'GetNewFactQuote': function () {
+    'GetNewFactQuote': function() {
         this.emit('GetQuote');
     },
-    'GetQuote': function () {
+    'LaunchQuoteApp': function() {
+        var speechOutput = "Starting quote machine. Please ask for a quote.";
+        this.emit(':tellWithCard', speechOutput);
+    },
+    'GetQuote': function() {
         // Get a random quote from the quotes list
         var quotesIndex = Math.floor(Math.random() * quotes.length);
         var randomQuote = quotes[quotesIndex];
 
         // Create speech output
-        var speechOutput = "Here's a quote by: "+ randomQuote['author'] + ":, " + randomQuote['quote'];
+        var speechOutput = "Here's a quote by: " + randomQuote['author'] + ":, " + randomQuote['quote'];
 
         this.emit(':tellWithCard', speechOutput, SKILL_NAME)
     },
-    'AMAZON.HelpIntent': function () {
+    'AMAZON.HelpIntent': function() {
         var speechOutput = "You can say tell me a quote, or, you can say exit... What can I help you with?";
         var reprompt = "What can I help you with?";
         this.emit(':ask', speechOutput, reprompt);
     },
-    'AMAZON.CancelIntent': function () {
+    'AMAZON.CancelIntent': function() {
         this.emit(':tell', 'Goodbye!');
     },
-    'AMAZON.StopIntent': function () {
+    'AMAZON.StopIntent': function() {
         this.emit(':tell', 'Goodbye!');
     }
 };
