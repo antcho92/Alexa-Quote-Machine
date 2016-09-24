@@ -24,8 +24,8 @@ var handlers = {
     },
     'GetQuote': function () {
         // Get a random quote from the quotes list
-        var quotesIndex = Math.floor(Math.random() * quotes["quotes"].length);
-        var randomQuote = quotes["quotes"][quotesIndex];
+        var quotesIndex = Math.floor(Math.random() * quotes.length);
+        var randomQuote = quotes[quotesIndex];
 
         // Create speech output
         var speechOutput = "Here's a quote by: "+ randomQuote['author'] + ":, " + randomQuote['quote'];

@@ -1,4 +1,4 @@
-module.exports = {"quotes": [
+module.exports = [
     {
         "author": "Henry David Thoreau",
         "quote": "If you would convince a man that he does wrong, do right. Men will believe what they see."
@@ -43,7 +43,7 @@ module.exports = {"quotes": [
         "author": "Mark Twain",
         "quote": "I don't like to commit myself about heaven and hell-you see, I have friends in both places."
     }
-]};
+];
 
 
 /*   template
